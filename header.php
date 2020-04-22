@@ -44,6 +44,10 @@
             session_start();
                 if(isset($_SESSION['username'])) { 
                     echo("WELCOME, " . $_SESSION['username']); 
+                    echo '<li>
+                            <a href="cart.php"><i class="fas fa-shopping-cart"></i></a>
+                          </li>
+                    ';
                 } else {
                     echo("Not set?");
                 }

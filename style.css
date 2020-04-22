@@ -44,7 +44,7 @@ a {
 }
 
 .container {
-	max-width: 700px;
+	max-width: 800px;
 	padding: 15px;
 	margin: auto;
 }
@@ -127,6 +127,10 @@ input[type="submit"]:hover {
 #sub-nav a:hover {
 	cursor: pointer;
 	border-bottom: 5px solid var(--primary-color);
+}
+
+.fa-shopping-cart {
+	font-size: 1.5rem;
 }
 
 /* #endregion -- */
@@ -335,6 +339,53 @@ footer form input:-ms-input-placeholder {
 footer form input::-ms-input-placeholder {
 	/* Microsoft Edge */
 	color: #be6862;
+}
+
+/* #endregion */
+
+/* #region ORDER PAGE */
+
+#order-pizza-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+#order-pizza-container h1 {
+	display: block;
+}
+
+#order-pizza-container section {
+	border: 1px solid #ccc;
+	padding: 10px;
+}
+
+.order-box {
+	padding-bottom: 10px;
+}
+
+.quantity-h4 {
+	display: inline-block;
+}
+
+.quantity-field {
+	font-size: 1.3rem;
+	display: inline-block;
+	width: inherit !important; /* Full width */
+	padding: 12px; /* Some padding */
+	border: 1px solid #ccc; /* Gray border */
+	border-radius: 4px; /* Rounded borders */
+	box-sizing: border-box; /* Make sure that padding and width stays in place */
+	margin-top: 6px; /* Add a top margin */
+	margin-bottom: 16px; /* Bottom margin */
+	resize: vertical; /* Allow the user to vertically resize the textarea (not horizontally) */
+}
+
+/* #endregion */
+
+/* #region CART PAGE */
+
+.cart-table {
+	padding-bottom: 10px;
 }
 
 /* #endregion */
