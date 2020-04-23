@@ -34,7 +34,7 @@
     $query = "SELECT total_price FROM orders WHERE order_id = '$current_order'";
     $query_results = mysqli_query($conn, $query);
     if($row = mysqli_fetch_row($query_results)) {
-        if($row[0] > 0) {
+        if(intval($row[0]) > 0) {
             // Create a new order
             $query = "INSERT INTO orders VALUES (NULL, NOW(), 0, '$customer_id')";
             $query_results = mysqli_query($conn, $query);
