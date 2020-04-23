@@ -2,7 +2,9 @@
     include_once "dbh.inc.php";
     session_start();
 
-    $query = "select * from orders where customer_customer_id = 1 and total_price > 0";
+
+
+    $query = "select * from orders where customer_customer_id = '$customer_id' and total_price > 0";
     $query_results = mysqli_query($conn, $query);
 
     while($row = mysqli_fetch_row($query_results)) {

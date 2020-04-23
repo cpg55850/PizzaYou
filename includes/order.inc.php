@@ -30,6 +30,27 @@
 
     $current_order = $_SESSION['current_order'];
 
+    // Check the user id
+    $query = "SELECT order_id FROM orders WHERE customer_customer_id = '$customer_id' AND order_id = '$current_order'";
+
+    echo("userid? " . $query);
+
+    $query_results = mysqli_query($conn, $query);
+    if(!($row = mysqli_fetch_row($query_results))) { // NO RESULTS: customer id is wrong
+        // Update the order to correct user
+        $query = "UPDATE orders SET customer_customer_id = '$customer_id' WHERE orders.order_id = '$current_order'";
+        echo("CREATE NEW ORDER " . $query);
+        $query_results = mysqli_query($conn, $query);
+
+        // Get that new order
+        $query = "SELECT max(order_ID) FROM orders";
+        $query_results = mysqli_query($conn, $query);
+        if($row = mysqli_fetch_row($query_results)) {
+            $_SESSION['current_order'] = $row[0];
+            $current_order = $_SESSION['current_order'];
+        }
+    }
+
     echo("food: " . $food);
     echo("quantity: " . $quantity);
     echo("customer_id: " . $customer_id);

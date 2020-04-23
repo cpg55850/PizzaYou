@@ -390,6 +390,17 @@ footer form input::-ms-input-placeholder {
 
 /* #endregion */
 
+/* #region ERROR STYLING */
+
+#uname-error,
+#email-error,
+#pwd-error,
+#pwd2-error {
+	color: red !important;
+}
+
+/* #endregion */
+
 /* #region MEDIA QUERIES */
 @media only screen and (max-width: 800px) {
 	#sub-nav {

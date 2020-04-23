@@ -45,30 +45,22 @@
 
                 <?php 
             session_start();
-                if(isset($_SESSION['username'])) { 
-                    echo("<a href='profile.php'>WELCOME, " . $_SESSION['username'] . "</a>"); 
+                if(isset($_SESSION['u_name'])) { 
+                    echo("<a href='profile.php?id=" . $_SESSION['customer_id'] . "'>WELCOME, " . $_SESSION['u_name'] . "</a>"); 
                     echo '<li>
                             <a href="cart.php"><i class="fas fa-shopping-cart"></i></a>
                           </li>
-                    ';
+                          <li>
+                            <a href="order.php">Order</a>
+                            </li>
+                        ';
                 } else {
-                    echo("Not set?");
+                    echo("Not logged in.");
                 }
                 
             ?>
             </li>
-            <li>
-                <a href="menu.php">Menu</a>
-            </li>
-            <li>
-                <a href="order.php">Order</a>
-            </li>
-            <li>
-                <a href="deals.php">Deals</a>
-            </li>
-            <li>
-                <a href="wings.php">Wings</a>
-            </li>
+
             <li id="signin">
                 <a href="login.php">Sign In</a>
             </li>

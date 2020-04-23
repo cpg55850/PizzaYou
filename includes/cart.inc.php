@@ -9,8 +9,16 @@
     if($row = mysqli_fetch_row($query_results)) {
         $current_order = $row[0];
     }
-    
-    $query = "
+
+    $customer_id = $_SESSION['customer_id'];
+
+    $query = "SELECT *
+    FROM orders
+    WHERE order_id = '$current_order'
+    AND customer_customer_id = '$customer_id'";
+    $query_results = mysqli_query($conn, $query);
+    if($row = mysqli_fetch_row($query_results)) {
+        $query = "
     SELECT
         food_item.name, food_item.price, orders_has_food_item.quantity
     FROM
@@ -48,6 +56,20 @@
     }
 
     echo("</table>");
+    }
+    
+    
 
     echo("<h3>TOTAL: $" . $_SESSION['totalPrice']);
+
+    if($_SESSION['totalPrice'] > 0) {
+        echo '<input type="submit" value="Place Order" id="submitorder">';
+    }
     ?>
+
+<script>
+$("#submitorder").click(function() {
+    $.get("./includes/submit_order.inc.php")
+    $("#output_orders").html("<h1>Your order has been placed.</h1>");
+});
+</script>
