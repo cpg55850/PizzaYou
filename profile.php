@@ -8,7 +8,9 @@
 
 <script>
 $(document).ready(function() {
-    $(".container").text("PROFILE");
+    $.get('includes/profile.inc.php', function(data, status) {
+        $('.container').html(data);
+    })
 })
 </script>
 
