@@ -5,7 +5,6 @@
     $food = $_GET['food'];
     $quantity = $_GET['quantity'];
     $customer_id = $_SESSION['customer_id'];
-    $current_order = $_SESSION['current_order'];
 
     // Get the current order
     $query = "SELECT max(order_ID) FROM orders";
@@ -31,6 +30,7 @@
 
     // Check if the current order's total price is greater than 0,
     // if so it has already been submitted
+    $current_order = $_SESSION['current_order'];
     $query = "SELECT total_price FROM orders WHERE order_id = '$current_order'";
     $query_results = mysqli_query($conn, $query);
     if($row = mysqli_fetch_row($query_results)) {

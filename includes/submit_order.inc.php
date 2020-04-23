@@ -9,4 +9,8 @@
     // Update current order
     $query = "UPDATE orders SET total_price = '$totalCosts', order_date = NOW() WHERE order_id = '$current_order'";
     $query_results = mysqli_query($conn, $query);
+
+    // Create new order
+    $query = "INSERT INTO orders VALUES (NULL, NOW(), 0, $customer_id)";
+    $query_results = mysqli_query($conn, $query);
 ?>

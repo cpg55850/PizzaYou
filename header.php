@@ -46,7 +46,7 @@
                 <?php 
             session_start();
                 if(isset($_SESSION['username'])) { 
-                    echo("WELCOME, " . $_SESSION['username']); 
+                    echo("<a href='profile.php'>WELCOME, " . $_SESSION['username'] . "</a>"); 
                     echo '<li>
                             <a href="cart.php"><i class="fas fa-shopping-cart"></i></a>
                           </li>
