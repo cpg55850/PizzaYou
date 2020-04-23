@@ -63,15 +63,13 @@
         </section>
 
         <div id="output"></div>
-
-
     </div>
 </div>
 <script>
 $(".drink-form").submit(function(e) {
     e.preventDefault();
     $.get("./includes/order.inc.php", {
-        drink: $(".drink-food-selection option:selected").val(),
+        food: $(".drink-food-selection option:selected").val(),
         quantity: $(".drink-quantity-selection option:selected").text()
     }, function(data, status) {
         $("#output").text(data);
@@ -81,7 +79,7 @@ $(".drink-form").submit(function(e) {
 $(".pizza-form").submit(function(e) {
     e.preventDefault();
     $.get("./includes/order.inc.php", {
-        drink: $(".pizza-food-selection option:selected").val(),
+        food: $(".pizza-food-selection option:selected").val(),
         quantity: $(".pizza-quantity-selection option:selected").text()
     }, function(data, status) {
         $("#output").text(data);

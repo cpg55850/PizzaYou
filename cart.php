@@ -3,51 +3,24 @@
 ?>
 
 <div class="container">
-    <h2>Shopping Cart</h2>
-    <?php
-    $totalCosts = 0;
-    
-    $query = "
-    SELECT
-        food_item.name, food_item.price, orders_has_food_item.quantity
-    FROM
-        food_item
-    INNER JOIN
-        orders_has_food_item
-    ON
-        food_item.idfood_item = orders_has_food_item.food_item_idfood_item
-    ";
-    $query_results = mysqli_query($conn, $query);
+    <div id="output_orders"></div>
 
-    echo("<table class='cart-table'>");
-    if($query_results) {
-        while($row = mysqli_fetch_assoc($query_results)) {
-            if($row['quantity'] > 0) { echo '
-            <tr>
-                <td><b>
-                    ' . $row['name'] . '
-                </b></td>
-                <td>
-                    ' . $row['price'] . '
-                </td>
-                <td> Quantity:
-                ' . $row['quantity'] . '
-                </td>
-                <td> Price:
-                $' . $row['price'] * $row['quantity']. '
-                </td>     
-            </tr>
-        ';
-            }
-            $totalCosts += $row['price'] * $row['quantity'];
-        }
-    }
-
-    echo("</table>");
-
-    echo("<h3>TOTAL: $" . $totalCosts);
-    ?>
+    <input type="submit" value="Place Order" id="submitorder">
 </div>
+
+<script>
+$(document).ready(function() {
+    $.get("./includes/cart.inc.php", function(data, status) {
+        $("#output_orders").html(data);
+    })
+
+    $("#submitorder").click(function() {
+        $.get("./includes/submit_order.inc.php")
+        $("#output_orders").html("<h1>Your order has been placed.</h1>");
+    });
+
+})
+</script>
 
 <?php
     include_once "./footer.php";

@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 if(isset($_POST['submit'])){
@@ -30,11 +29,9 @@ if(isset($_POST['submit'])){
 					} elseif($enteredPwdHashed == $row['password']){
 						//Log in the user here
 						$_SESSION['customer_id'] = $row['customer_id'];
-						$_SESSION['username'] = $row['username'];
+						$_SESSION['u_name'] = $row['username'];
 						$_SESSION['email'] = $row['email'];
 						$_SESSION['password'] = $row['password'];
-						header("Location: ../index.php?login=success");
-						exit();
 					}
 				}
 			}
