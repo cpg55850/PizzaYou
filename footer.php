@@ -1,3 +1,5 @@
+</body>
+
 <footer>
     <div class="ft-main">
         <div class="ft-a">

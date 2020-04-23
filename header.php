@@ -22,6 +22,9 @@
     <!-- FONTAWESOME -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 
+    <!-- JQUERY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+
     <title>Pizza You</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -72,3 +75,5 @@
     </nav>
 
 </header>
+
+<body>

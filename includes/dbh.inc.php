@@ -3,7 +3,7 @@
 $host = "localhost";
 $username = "root";
 $password = "root";
-$dbname = "pizza";
+$dbname = "pizza2";
 $port = 3306;
 
 $conn = mysqli_connect($host.':'.$port, $username, $password, $dbname);
