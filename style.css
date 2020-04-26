@@ -229,6 +229,31 @@ input[type="submit"]:hover {
 	max-width: 700px;
 }
 
+.galleryGrid {
+	display: grid;
+	padding: 5px;
+	grid-gap: 5px;
+	grid-template-columns: repeat(4, 1fr);
+}
+
+.galleryGrid > div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+}
+
+.galleryGrid > div > img {
+	width: 100%;
+	height: 100%;
+	transition: transform 0.2s;
+	object-fit: cover;
+}
+
+.galleryGrid > div > img:hover {
+	transform: scale(1.5);
+}
+
 /* #endregion */
 
 /* #region FOOTER */
@@ -355,16 +380,11 @@ footer form input::-ms-input-placeholder {
 }
 
 #order-pizza-container section {
-	border: 1px solid #ccc;
 	padding: 10px;
 }
 
 .order-box {
 	padding-bottom: 10px;
-}
-
-.quantity-h4 {
-	display: inline-block;
 }
 
 .quantity-field {
@@ -386,6 +406,11 @@ footer form input::-ms-input-placeholder {
 
 .cart-table {
 	padding-bottom: 10px;
+}
+
+#submitorder {
+	display: block;
+	margin-top: 10px;
 }
 
 /* #endregion */

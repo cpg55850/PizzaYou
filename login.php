@@ -20,7 +20,7 @@
         if(empty($email) || empty($pwd)){
                 echo("<div class='container'>Empty fields.</div>");
             } else {
-                $sql = "SELECT * FROM customer WHERE email = '$email'";
+                $sql = "SELECT * FROM PIZZA_YOU_customer WHERE email = '$email'";
                 $result = mysqli_query($conn, $sql);
                 $resultCheck = mysqli_num_rows($result);
                 if($resultCheck < 1){

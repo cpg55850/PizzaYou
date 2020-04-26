@@ -12,25 +12,20 @@
         if(empty($email) || empty($uname) || empty($pwd)){
             echo("empty");
         } else {
-            //Check if email is valid
-            if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-                echo("email invalid");
+            $sql = "SELECT * FROM PIZZA_YOU_customer WHERE username='$uname'";
+            $result = mysqli_query($conn, $sql);
+            $resultCheck = mysqli_num_rows($result);
+            
+            if($resultCheck > 0){
+                echo("user is taken");
             } else {
-                $sql = "SELECT * FROM customer WHERE username='$uname'";
-                $result = mysqli_query($conn, $sql);
-                $resultCheck = mysqli_num_rows($result);
-                
-                if($resultCheck > 0){
-                    echo("user is taken");
-                } else {
-                    //Hashing the password
-                    $hashedPwd = sha1($pwd);
-                    //Insert the user into the database
-                    $sql = "INSERT INTO customer (username, email, password) VALUES ('$uname', '$email', '$hashedPwd');";
-                    mysqli_query($conn, $sql);    
+                //Hashing the password
+                $hashedPwd = sha1($pwd);
+                //Insert the user into the database
+                $sql = "INSERT INTO PIZZA_YOU_customer (username, email, password) VALUES ('$uname', '$email', '$hashedPwd');";
+                mysqli_query($conn, $sql);    
 
-                    echo("Success!");
-                }
+                echo("Success!");
             }
         }
     } 

@@ -12,7 +12,7 @@
                 <form class="pizza-form">
                     <select class="pizza-food-selection">
                         <?php
-                        $query = "SELECT name, idfood_item FROM food_item WHERE category = 'Pizza'";
+                        $query = "SELECT name, idfood_item FROM PIZZA_YOU_food_item WHERE category = 'Pizza'";
                         $query_results = mysqli_query($conn, $query);
 
                         if($query_results) {
@@ -23,7 +23,7 @@
                         ?>
                     </select>
                     <input type="submit" value="Submit me" id="submitbutton">
-                    <h4 class="quantity-h4">Quantity</h4>
+                    <h4 class="quantity-h4">Quantity:</h4>
                     <select class="pizza-quantity-selection">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -40,7 +40,7 @@
                 <form class="drink-form">
                     <select class="drink-food-selection">
                         <?php
-                        $query = "SELECT name, idfood_item FROM food_item WHERE category = 'Drink'";
+                        $query = "SELECT name, idfood_item FROM PIZZA_YOU_food_item WHERE category = 'Drink'";
                         $query_results = mysqli_query($conn, $query);
 
                         if($query_results) {
@@ -51,7 +51,7 @@
                         ?>
                     </select>
                     <input type="submit" value="Submit me" id="submitbutton">
-                    <h4 class="quantity-h4">Quantity</h4>
+                    <h4 class="quantity-h4">Quantity:</h4>
                     <select class="drink-quantity-selection">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -63,6 +63,7 @@
         </section>
 
         <div id="output"></div>
+        <div id="output2"></div>
     </div>
 </div>
 <script>
@@ -72,7 +73,7 @@ $(".drink-form").submit(function(e) {
         food: $(".drink-food-selection option:selected").val(),
         quantity: $(".drink-quantity-selection option:selected").text()
     }, function(data, status) {
-        $("#output").text(data);
+        $("#output2").empty().show().html("Drink added!").delay(1000).fadeOut(300);
     });
 });
 

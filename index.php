@@ -9,8 +9,13 @@
     </div>
 
     <div class="columnGrid">
-        <div class="columnItem">
-            <h3>Assignment No. 3</h3>
+
+        <div class="galleryGrid">
+
+            <div><img src="img/photo1.jpg" alt=""></div>
+            <div><img src="img/photo2.jpg" alt=""></div>
+            <div><img src="img/photo3.jpg" alt=""></div>
+            <div><img src="img/photo4.jpg" alt=""></div>
         </div>
 
     </div>
