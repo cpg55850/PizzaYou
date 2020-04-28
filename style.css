@@ -129,6 +129,20 @@ input[type="submit"]:hover {
 	border-bottom: 5px solid var(--primary-color);
 }
 
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	padding: 12px 16px;
+	z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
 .fa-shopping-cart {
 	font-size: 1.5rem;
 }
@@ -203,7 +217,7 @@ input[type="submit"]:hover {
 	position: fixed;
 	top: 0;
 	left: 0;
-	background-image: url("./img/showcase.jpg");
+	background-image: url("./img/showcase-min.jpg");
 	height: 100vh;
 	width: 100vw;
 	background-position: center;
@@ -370,16 +384,16 @@ footer form input::-ms-input-placeholder {
 
 /* #region ORDER PAGE */
 
-#order-pizza-container {
+#order-container {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 }
 
-#order-pizza-container h1 {
+#order-container h1 {
 	display: block;
 }
 
-#order-pizza-container section {
+#order-container section {
 	padding: 10px;
 }
 
@@ -398,6 +412,22 @@ footer form input::-ms-input-placeholder {
 	margin-top: 6px; /* Add a top margin */
 	margin-bottom: 16px; /* Bottom margin */
 	resize: vertical; /* Allow the user to vertically resize the textarea (not horizontally) */
+}
+
+#foodimg-container {
+	display: flex;
+	height: 200px;
+	width: 200px;
+	overflow: hidden;
+	border-radius: 50%;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	margin: 15px;
+}
+
+.foodimg {
+	height: 100%;
 }
 
 /* #endregion */
@@ -426,8 +456,12 @@ footer form input::-ms-input-placeholder {
 
 /* #endregion */
 
+/* #region DATA */
+
+/* #endregion */
+
 /* #region MEDIA QUERIES */
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 750px) {
 	#sub-nav {
 		display: none;
 	}
@@ -452,6 +486,10 @@ footer form input::-ms-input-placeholder {
 		flex-direction: column;
 		justify-content: space-between;
 		padding: 56px 100px;
+	}
+
+	.chart-grid {
+		grid-template-columns: 1fr;
 	}
 }
 

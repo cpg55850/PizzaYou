@@ -12,10 +12,10 @@
 
         <div class="galleryGrid">
 
-            <div><img src="img/photo1.jpg" alt=""></div>
-            <div><img src="img/photo2.jpg" alt=""></div>
-            <div><img src="img/photo3.jpg" alt=""></div>
-            <div><img src="img/photo4.jpg" alt=""></div>
+            <div><img src="img/photo1-min.jpg" alt=""></div>
+            <div><img src="img/photo2-min.jpg" alt=""></div>
+            <div><img src="img/photo3-min.jpg" alt=""></div>
+            <div><img src="img/photo4-min.jpg" alt=""></div>
         </div>
 
     </div>

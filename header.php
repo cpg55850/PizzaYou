@@ -50,9 +50,15 @@
                     echo '<li>
                             <a href="cart.php"><i class="fas fa-shopping-cart"></i></a>
                           </li>
-                          <li>
-                            <a href="order.php">Order</a>
+                          <li class="dropdown">
+                            <a>Order</a>
+                            <div class="dropdown-content">
+                            <a href="pizzas.php">Pizza</a>
+                            <a href="drinks.php">Drinks</a>
+                            <a href="order.php">Wings</a>
+                            </div>
                             </li>
+
                         ';
                 } else {
                     echo("Not logged in.");

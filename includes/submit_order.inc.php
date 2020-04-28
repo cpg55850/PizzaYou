@@ -13,15 +13,16 @@
     }
 
     // Calculate waiting time
-    $waiting_time = $num_orders * 10 + 10;
+    $waiting_time = $num_orders * 2 + 2;
 
     // Create new order
-    $query = "INSERT INTO PIZZA_YOU_orders VALUES (NULL, NOW(), $totalCosts, $customer_id, $waiting_time)";
+    $query = "INSERT INTO PIZZA_YOU_orders VALUES (NULL, NOW(), NULL, NULL, $totalCosts, $customer_id)";
     $query_results = mysqli_query($conn, $query);
 
     echo "<h2>Thank you for your order!</h2><br>";
-    echo "New order has id: " . mysqli_insert_id($conn);
+    echo "New order has id: " . mysqli_insert_id($conn) . "<br>";
     $insertId = mysqli_insert_id($conn);
+    echo "Your wait time: " . $waiting_time . " minutes.";
 
     // Create order details
     foreach($_SESSION['foods'] as $foodID => $quantity) {

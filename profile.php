@@ -9,11 +9,10 @@
         $query = "select * from PIZZA_YOU_orders where customer_customer_id = '$id' and total_price > 0";
         $query_results = mysqli_query($conn, $query);
     
-        while($row = mysqli_fetch_row($query_results)) {
+        while($row = mysqli_fetch_assoc($query_results)) {
             echo('<b>Order Details</b>' . '<br>');
-            echo('Placed on: ' . $row[1] . '<br>');
-            echo('$' . $row[2] . '<br>');
-            echo('Wait time: ' . $row[4] . ' minutes<br><br>');
+            echo('Placed on: ' . $row['order_date'] . '<br>');
+            echo('$' . $row['total_price'] . '<br><br>');
         }
     ?>
 </div>
