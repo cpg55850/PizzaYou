@@ -3,7 +3,7 @@
 ?>
 
 <div class="container">
-    <h1>Order Drink</h1>
+    <h1 style="text-align: center">Order Drink</h1>
     <div id="order-container">
         <?php
         $query = "SELECT name, idfood_item, image_url FROM PIZZA_YOU_food_item WHERE category = '2'";

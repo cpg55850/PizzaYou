@@ -20,7 +20,7 @@
         if(empty($email) || empty($pwd)){
                 echo("<div class='container'>Empty fields.</div>");
             } else {
-                $sql = "SELECT * FROM PIZZA_YOU_customer WHERE email = '$email'";
+                $sql = "SELECT * FROM PIZZA_YOU_users WHERE email = '$email'";
                 $result = mysqli_query($conn, $sql);
                 $resultCheck = mysqli_num_rows($result);
                 if($resultCheck < 1){
@@ -37,6 +37,7 @@
                             $_SESSION['u_name'] = $row['username'];
                             $_SESSION['email'] = $row['email'];
                             $_SESSION['password'] = $row['password'];
+                            $_SESSION['user_type'] = $row['user_type'];
                             header("Location: ./");
                             exit();
                         }

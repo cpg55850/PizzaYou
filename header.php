@@ -1,5 +1,5 @@
 <?php
-    include_once "./includes/dbh.inc.php";
+    include_once "includes/dbh.inc.php";
 ?>
 
 <!DOCTYPE html>
@@ -25,6 +25,13 @@
     <!-- JQUERY -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
 
+    <!-- ANIMATE CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+    <!-- AOS -->
+    <link rel='stylesheet' href='https://unpkg.com/aos@next/dist/aos.css'>
+
+
     <title>Pizza You</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -32,18 +39,22 @@
 <header>
 
     <nav id="main-nav">
-        <a href="index.php">
-            <div id="logo">
-                <img src="img/tri_logo.png" alt="">
-                <a href="index.php">Pizza You</a>
-            </div>
-        </a>
+        <div id="logoContainer">
+            <a href="index.php">
+                <div id="logo">
+                    <img src="img/tri_logo.png" alt="">
+                    <a id="logoText" href="index.php">Pizza You</a>
+                </div>
+            </a>
+        </div>
+
 
 
         <ul id="sub-nav">
-            <li>
 
-                <?php 
+            <li id="menuBtn"><i class="fas fa-bars"></i></li>
+
+            <div id="desktopMenu"> <?php 
             session_start();
                 if(isset($_SESSION['u_name'])) { 
                     echo("<a href='profile.php?id=" . $_SESSION['customer_id'] . "'>WELCOME, " . $_SESSION['u_name'] . "</a>"); 
@@ -55,24 +66,74 @@
                             <div class="dropdown-content">
                             <a href="pizzas.php">Pizza</a>
                             <a href="drinks.php">Drinks</a>
-                            <a href="order.php">Wings</a>
                             </div>
                             </li>
 
+
                         ';
+                        if($_SESSION['user_type'] == 2) {
+                            echo '<li><a href="data.php">Data</a></li>';
+                            echo '<li><a href="manage.php">Manage</a></li>';
+                        }
+
+                        echo '
+                        <div id="signin">
+                            <a href="login.php">Sign In</a>
+                        </div>';
                 } else {
                     echo("Not logged in.");
                 }
                 
-            ?>
-            </li>
+            ?></div>
 
-            <li id="signin">
-                <a href="login.php">Sign In</a>
+
+        </ul>
+    </nav>
+
+    <nav id="mobileMenu">
+        <ul>
+            <li>
+                <a href="cart.php"><i class="fas fa-shopping-cart"></i></a>
             </li>
+            <li><a href="pizzas.php">Pizza</a></li>
+            <li><a href="drinks.php">Drinks</a></li>
+            <li><a href="order.php">Wings</a></li>
+            <?php
+            if($_SESSION['user_type'] == 2) {
+                    echo '<li><a href="data.php">Data</a></li>';
+                    echo '<li><a href="manage.php">Manage</a></li>';
+                }
+            ?>
+            <li><a href="login.php">Sign In</a></li>
+
         </ul>
     </nav>
 
 </header>
+
+<script src='https://unpkg.com/aos@next/dist/aos.js'></script>
+<script>
+AOS.init({
+    offset: 400, // offset (in px) from the original trigger point
+    delay: 0, // values from 0 to 3000, with step 50ms
+    duration: 1000 // values from 0 to 3000, with step 50ms
+});
+</script>
+<script src="./script.js"></script>
+<script>
+$(window).resize(function() {
+    var width = $(window).width();
+    if (width > 750) {
+        $("#mobileMenu").hide();
+    }
+})
+$(document).ready(function() {
+
+
+    $("#menuBtn").click(function() {
+        $("#mobileMenu").slideToggle();
+    })
+})
+</script>
 
 <body>

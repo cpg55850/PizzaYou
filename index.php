@@ -2,25 +2,40 @@
     include_once "./header.php";
 ?>
 
-<body>
-    <div id="showcase">
-        <img id="fancyLogo" src="img/fancy_logo.png" alt="">
-        <div id="bgImage"></div>
-    </div>
+<div id="showcase">
+    <img id="fancyLogo" class="animated bounceInUp" src="img/fancy_logo.png" alt="">
+    <div id="bgImage"></div>
+</div>
 
-    <div class="columnGrid">
+<div class="columnGrid">
 
-        <div class="galleryGrid">
 
-            <div><img src="img/photo1-min.jpg" alt=""></div>
-            <div><img src="img/photo2-min.jpg" alt=""></div>
-            <div><img src="img/photo3-min.jpg" alt=""></div>
-            <div><img src="img/photo4-min.jpg" alt=""></div>
+    <section class="card">
+        <img id="img4" data-aos="fade-left" src="img/photo1-min.jpg">
+        <div>
+            <h2>Delicious...</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibusdam provident vitae amet quis
+                voluptatibus cum, rem consequatur eum sint ad illum. Corporis magni quam, beatae similique nesciunt
+                laboriosam ratione inventore.</p>
         </div>
 
-    </div>
+    </section>
 
-</body>
+    <section class="card">
+        <img id="img4" data-aos="fade-right" src="img/photo3-min.jpg">
+        <div>
+            <h2>Delicious...</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibusdam provident vitae amet quis
+                voluptatibus cum, rem consequatur eum sint ad illum. Corporis magni quam, beatae similique nesciunt
+                laboriosam ratione inventore.</p>
+        </div>
+
+    </section>
+
+</div>
+
+
+
 
 <?php
     include_once "./footer.php";

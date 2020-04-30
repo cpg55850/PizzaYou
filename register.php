@@ -6,13 +6,14 @@
         $email = mysqli_real_escape_string($conn, $_POST['email']);
         $uname = mysqli_real_escape_string($conn, $_POST['uname']);
         $pwd = mysqli_real_escape_string($conn, $_POST['pwd']);
+        $user_type = $_POST['user_type'];
         
         //Error handlers
         //Check for empty fields
         if(empty($email) || empty($uname) || empty($pwd)){
             echo("empty");
         } else {
-            $sql = "SELECT * FROM PIZZA_YOU_customer WHERE username='$uname'";
+            $sql = "SELECT * FROM  WHERE username='$uname'";
             $result = mysqli_query($conn, $sql);
             $resultCheck = mysqli_num_rows($result);
             
@@ -22,7 +23,7 @@
                 //Hashing the password
                 $hashedPwd = sha1($pwd);
                 //Insert the user into the database
-                $sql = "INSERT INTO PIZZA_YOU_customer (username, email, password) VALUES ('$uname', '$email', '$hashedPwd');";
+                $sql = "INSERT INTO  (username, email, password) VALUES ('$uname', '$email', '$hashedPwd', '$user_type');";
                 mysqli_query($conn, $sql);    
 
                 echo("Success!");
@@ -47,6 +48,14 @@
             </label>
         </p>
         <span class="error-form" id="email-error"></span>
+        <p>
+            <label for="user_type">User Type:
+                <select name="user_type" id="user_type">
+                    <option value="customer">Customer</option>
+                    <option value="manager">Manager</option>
+                </select>
+            </label>
+        </p>
         <p>
             <label for="pwd">Password:
                 <input type="password" name="pwd" id="form_pwd" placeholder="Enter your password">

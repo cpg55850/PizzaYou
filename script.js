@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
 	$("#fname-error").hide();
 	$("#lname-error").hide();
 	$("#uname-error").hide();
@@ -13,27 +13,27 @@ $(document).ready(function() {
 	var pwd_error = false;
 	var pwd2_error = false;
 
-	$("#form_fname").focusout(function() {
+	$("#form_fname").focusout(function () {
 		check_fname();
 	});
 
-	$("#form_lname").focusout(function() {
+	$("#form_lname").focusout(function () {
 		check_lname();
 	});
 
-	$("#form_uname").focusout(function() {
+	$("#form_uname").focusout(function () {
 		check_uname();
 	});
 
-	$("#form_email").focusout(function() {
+	$("#form_email").focusout(function () {
 		check_email();
 	});
 
-	$("#form_pwd").focusout(function() {
+	$("#form_pwd").focusout(function () {
 		check_pwd();
 	});
 
-	$("#form_pwd2").focusout(function() {
+	$("#form_pwd2").focusout(function () {
 		check_pwd2();
 	});
 
@@ -46,11 +46,7 @@ $(document).ready(function() {
 			fname_error = true;
 			return;
 		}
-		if (
-			!$("#form_fname")
-				.val()
-				.match(letters)
-		) {
+		if (!$("#form_fname").val().match(letters)) {
 			$("#fname-error").html(
 				"First name should be alphabetical characters only."
 			);
@@ -70,11 +66,7 @@ $(document).ready(function() {
 			lname_error = true;
 			return;
 		}
-		if (
-			!$("#form_lname")
-				.val()
-				.match(letters)
-		) {
+		if (!$("#form_lname").val().match(letters)) {
 			$("#lname-error").html(
 				"Last name should be alphabetical characters only."
 			);
@@ -156,7 +148,7 @@ $(document).ready(function() {
 		}
 	}
 
-	$("#reg_form").submit(function() {
+	$("#reg_form").submit(function () {
 		fname_error = false;
 		lname_error = false;
 		uname_error = false;
@@ -185,7 +177,7 @@ $(document).ready(function() {
 		}
 	});
 
-	$("#login_form").submit(function() {
+	$("#login_form").submit(function () {
 		email_error = false;
 		pwd_error = false;
 
@@ -199,7 +191,7 @@ $(document).ready(function() {
 		}
 	});
 
-	$("#pwd_form").submit(function() {
+	$("#pwd_form").submit(function () {
 		fname_error = false;
 		lname_error = false;
 		email_error = false;

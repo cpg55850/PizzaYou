@@ -98,16 +98,22 @@ input[type="submit"]:hover {
 	background-color: white;
 	font-weight: 600;
 	display: flex;
+	border-bottom: 1px solid #ddd;
 }
 
-#sub-nav {
+#desktopMenu {
 	margin: 0;
 	padding: 0;
 	display: flex;
 	align-items: center;
-	margin-left: auto;
 	margin-right: 20px;
 	list-style-type: none;
+}
+
+#sub-nav {
+	margin-left: auto;
+	display: flex;
+	padding: 0;
 }
 
 #sub-nav li {
@@ -147,6 +153,43 @@ input[type="submit"]:hover {
 	font-size: 1.5rem;
 }
 
+#menuBtn {
+	visibility: hidden;
+	font-size: 2rem;
+	list-style-type: none;
+	padding: 10px;
+}
+
+#mobileMenu {
+	background-color: white;
+	display: none;
+	border-bottom: 1px solid #ddd;
+}
+
+#mobileMenu ul {
+	margin: 0px;
+	padding: 15px;
+	background-color: white;
+}
+
+#mobileMenu li {
+	text-align: center;
+	font-size: 16px;
+	list-style-type: none;
+	margin: 0;
+}
+
+#mobileMenu li:hover {
+	background-color: #ccc;
+	cursor: pointer;
+}
+
+#mobileMenu a {
+	display: block;
+	margin: 3px;
+	padding: 3px;
+}
+
 /* #endregion -- */
 
 /* #region LOGO -- */
@@ -158,7 +201,8 @@ input[type="submit"]:hover {
 	margin: var(--navlink-margin);
 }
 
-#logo a {
+#logoText {
+	width: 120px;
 	padding-left: 5px;
 	font-size: 24px;
 	text-decoration: none;
@@ -230,42 +274,31 @@ input[type="submit"]:hover {
 
 /* #region INDEX */
 
-.columnGrid {
-	display: grid;
-	background-color: white;
-	padding: 20px;
-}
-
-.columnItem {
-	justify-self: center;
-	align-self: center;
-	overflow: hidden;
-	max-width: 700px;
-}
-
-.galleryGrid {
-	display: grid;
-	padding: 5px;
-	grid-gap: 5px;
-	grid-template-columns: repeat(4, 1fr);
-}
-
-.galleryGrid > div {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	overflow: hidden;
-}
-
-.galleryGrid > div > img {
+.card img {
 	width: 100%;
-	height: 100%;
+	height: 500px;
 	transition: transform 0.2s;
 	object-fit: cover;
 }
 
-.galleryGrid > div > img:hover {
+.card img:hover {
 	transform: scale(1.5);
+}
+
+.card {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: 1rem;
+	background: white;
+	padding: 30px;
+	margin: 0;
+}
+
+.card > div {
+	padding: 2rem;
+	justify-self: center;
+	align-self: center;
+	line-height: 1.6;
 }
 
 /* #endregion */
@@ -386,6 +419,8 @@ footer form input::-ms-input-placeholder {
 
 #order-container {
 	display: grid;
+	align-items: center;
+	justify-items: center;
 	grid-template-columns: 1fr 1fr;
 }
 
@@ -456,13 +491,33 @@ footer form input::-ms-input-placeholder {
 
 /* #endregion */
 
-/* #region DATA */
+/* #region MANAGE */
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th,
+td {
+	text-align: left;
+	padding: 8px;
+}
+
+tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+th {
+	background-color: #4caf50;
+	color: white;
+}
 
 /* #endregion */
 
 /* #region MEDIA QUERIES */
 @media only screen and (max-width: 750px) {
-	#sub-nav {
+	#desktopMenu {
 		display: none;
 	}
 
@@ -490,6 +545,39 @@ footer form input::-ms-input-placeholder {
 
 	.chart-grid {
 		grid-template-columns: 1fr;
+	}
+
+	#menuBtn {
+		visibility: visible;
+	}
+
+	.card {
+		grid-template-columns: 1fr;
+		grid-gap: 0rem;
+	}
+
+	.card img {
+		height: 400px;
+	}
+
+	.card > div {
+		padding: 1rem;
+	}
+
+	#order-container {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media only screen and (max-width: 550px) {
+	#order-container {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media only screen and (min-width: 750px) {
+	.card:nth-child(odd) img {
+		order: 2;
 	}
 }
 
