@@ -49,6 +49,15 @@ a {
 	margin: auto;
 }
 
+.danger {
+	color: red;
+	font-weight: bold;
+}
+
+.text-center {
+	text-align: center !important;
+}
+
 /* #endregion */
 
 /* #region GLOBAL FORMS */
@@ -433,7 +442,7 @@ footer form input::-ms-input-placeholder {
 }
 
 .order-box {
-	padding-bottom: 10px;
+	padding: 10px;
 }
 
 .quantity-field {

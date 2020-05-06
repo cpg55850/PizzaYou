@@ -116,4 +116,3 @@
     $myJSON = json_encode($returnArr);
 
     echo $myJSON;
-?>

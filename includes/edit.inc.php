@@ -16,5 +16,3 @@
     $myJSON = json_encode($orderArray);
 
     echo($myJSON);
-
-?>

@@ -13,7 +13,9 @@
             while($row = mysqli_fetch_assoc($query_results)) {
                 echo('<b>Order Details</b>' . '<br>');
                 echo('Placed on: ' . $row['order_date'] . '<br>');
-                echo('$' . $row['total_price'] . '<br><br>');
+                echo('$' . $row['total_price'] . '<br>');
+                echo('<a class="danger" href="includes/delete_order.php?id=' . $row['order_id'] . '">Delete Order</a><br>');
+                echo("<br>");
             }
         } else {
             echo "<p>You are not authorized to view this page.";

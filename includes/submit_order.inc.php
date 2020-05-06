@@ -31,4 +31,3 @@
     }
 
     unset($_SESSION['foods']);
-?>

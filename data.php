@@ -15,7 +15,7 @@ $(document).ready(function() {
 
     if (user_type == 2) {
         $(".container").html(
-            '<section><h1>Orders by pizza type</h1><canvas id = "pizzaChart"></canvas></section><section><h1>Orders by day of the week</h1><canvas id = "weekChart"></canvas></section><h1>Order fulfill time</h1><canvas id = "fulfillChart"></canvas></section>'
+            '<h1>May take a moment to load...</h1><section><h1>Orders by pizza type</h1><canvas id = "pizzaChart"></canvas></section><section><h1>Orders by day of the week</h1><canvas id = "weekChart"></canvas></section><h1>Order fulfill time</h1><canvas id = "fulfillChart"></canvas></section>'
         );
 
         $.getJSON("includes/data.inc.php", function(result) {

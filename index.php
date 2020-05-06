@@ -9,7 +9,6 @@
 
 <div class="columnGrid">
 
-
     <section class="card">
         <img id="img4" data-aos="fade-left" src="img/photo1-min.jpg">
         <div>
@@ -18,7 +17,6 @@
                 voluptatibus cum, rem consequatur eum sint ad illum. Corporis magni quam, beatae similique nesciunt
                 laboriosam ratione inventore.</p>
         </div>
-
     </section>
 
     <section class="card">
@@ -29,13 +27,9 @@
                 voluptatibus cum, rem consequatur eum sint ad illum. Corporis magni quam, beatae similique nesciunt
                 laboriosam ratione inventore.</p>
         </div>
-
     </section>
 
 </div>
-
-
-
 
 <?php
     include_once "./footer.php";

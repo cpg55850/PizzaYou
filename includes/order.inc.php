@@ -22,6 +22,4 @@
         echo "key=" . $x . ", value=" . $x_value;
     }
 
-    header('Location: ../cart.php') ;
-
-?>
+    header('Location: ../cart.php');
