@@ -97,6 +97,11 @@
 
     <nav id="mobileMenu">
         <ul>
+            <?php 
+            if (isset($_SESSION['u_name'])) { 
+                echo("<li><a href='profile.php?id=" . $_SESSION['customer_id'] . "'>WELCOME, " . $_SESSION['u_name'] . "</a></li>"); 
+            }
+            ?>
             <li>
                 <a href="cart.php"><i class="fas fa-shopping-cart"></i></a>
             </li>
