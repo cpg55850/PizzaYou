@@ -1,74 +1,49 @@
 <?php
-    require_once('./header.php');
-    require_once('models/User.php');
+    include_once("header.php");
 
-    $userModel = new User;
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $email = '';
+        if (empty($_POST['email'])) {
+            $emailError = 'Please add your email';
+        } else {
+            $email = trim(htmlspecialchars($_POST['email']));
+        }
+    }
 
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        // Process form
-        // Sanitize POST data
-        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+    if(isset($_POST['submit'])){        
+        $email = trim(htmlspecialchars($_POST['email']));
+        $pwd = trim(htmlspecialchars($_POST['pwd']));
         
-        // Init data
-        $data =[
-          'email' => trim($_POST['email']),
-          'pwd' => trim($_POST['pwd']),
-          'email_err' => '',
-          'pwd_err' => '',      
-        ];
-
-        // Validate Email
-        if(empty($data['email'])){
-          $data['email_err'] = 'Pleae enter email';
+        //Error handlers
+        //Check if inputs are empty
+        if(empty($email) || empty($pwd)){
+                echo("<div class='container'>Empty fields.</div>");
+            } else {
+                $sql = "SELECT * FROM PIZZA_YOU_users WHERE email = '$email'";
+                $result = mysqli_query($conn, $sql);
+                $resultCheck = mysqli_num_rows($result);
+                if($resultCheck < 1){
+                    echo("<div class='container'>No user under that name.</div>");
+                } else {
+                    if($row = mysqli_fetch_assoc($result)){
+                        //De-hashing the password
+                        $enteredPwdHashed = sha1($pwd);
+                        if($enteredPwdHashed != $row['password']){
+                            echo("<div class='container'>Wrong e-mail or password.</div>");
+                        } elseif($enteredPwdHashed == $row['password']){
+                            //Log in the user here
+                            $_SESSION['customer_id'] = $row['customer_id'];
+                            $_SESSION['u_name'] = $row['username'];
+                            $_SESSION['email'] = $row['email'];
+                            $_SESSION['password'] = $row['password'];
+                            $_SESSION['user_type'] = $row['user_type'];
+                            header("Location: ./");
+                            exit();
+                        }
+                    }
+                }
+            }
         }
-
-        // Validate pwd
-        if(empty($data['pwd'])){
-          $data['pwd_err'] = 'Please enter pwd';
-        }
-
-        // Check for user/email
-        if($userModel->findUserByEmail($data['email'])){
-          // User found
-        } else {
-          // User not found
-          $data['email_err'] = 'No user found';
-        }
-
-        // Make sure errors are empty
-        if(empty($data['email_err']) && empty($data['pwd_err'])){
-          // Validated
-          // Check and set logged in user
-          $loggedInUser = $userModel->login($data['email'], $data['pwd']);
-
-          if($loggedInUser){
-            // Create Session
-            $_SESSION['user_id'] = $loggedInUser->customer_id;
-            $_SESSION['user_email'] = $loggedInUser->email;
-            $_SESSION['user_name'] = $loggedInUser->username;
-            $_SESSION['user_type'] = $loggedInUser->user_type;
-            header("Location: ./?login=success");
-          } else {
-            $data['pwd_err'] = 'pwd incorrect';
-
-            header("Location: ./?login=pwderror");
-          }
-        } else {
-          // Load view with errors
-          header("Location: ./?login=error");
-        }
-
-
-      } else {
-        // Init data
-        $data =[    
-          'email' => '',
-          'pwd' => '',
-          'email_err' => '',
-          'pwd_err' => '',        
-        ];
-      }
-
 ?>
 
 <div class="container">
@@ -83,8 +58,8 @@
         </p>
         <span class="error-form" id="email-error"></span>
         <p>
-            <label for="pwd">pwd:
-                <input type="password" name="pwd" id="form_pwd" placeholder="Enter your pwd">
+            <label for="pwd">Password:
+                <input type="password" name="pwd" id="form_pwd" placeholder="Enter your password">
             </label>
         </p>
         <span class="error-form" id="pwd-error"></span>
@@ -103,5 +78,5 @@
 <script src="script.js"></script>
 
 <?php
-    require_once("footer.php");
+    include_once("footer.php");
 ?>

@@ -54,10 +54,6 @@ a {
 	font-weight: bold;
 }
 
-.text-center {
-	text-align: center !important;
-}
-
 /* #endregion */
 
 /* #region GLOBAL FORMS */
@@ -442,7 +438,7 @@ footer form input::-ms-input-placeholder {
 }
 
 .order-box {
-	padding: 10px;
+	padding-bottom: 10px;
 }
 
 .quantity-field {
