@@ -24,25 +24,30 @@
 
 <script>
 $(document).ready(function() {
-    var user_type = "<?php if(isset($_SESSION['user_type'])) echo $_SESSION['user_type'] ?>";
+    var user_type = "<?php if(isset($_SESSION['user_type'])) echo $_SESSION['user_type']; ?>";
 
-    $.getJSON("includes/manage.inc.php", function(data, status) {
-        var html = "";
-        for (var i = 0; i < data.length; i++) {
-            html += "<tr>";
-            html += "<td><a href='edit.php?id=" + data[i][0] +
-            "'><i class='fas fa-edit'></li></a></td>";
-            for (var j = 0; j < data[i].length; j++) {
-                html += ("<td>" + data[i][j] + "</td>");
+    if (user_type == 2) {
+        $.getJSON("includes/manage.inc.php", function(data, status) {
+            var html = "";
+            for (var i = 0; i < data.length; i++) {
+                html += "<tr>";
+                html += "<td><a href='edit.php?id=" + data[i][0] +
+                    "'><i class='fas fa-edit'></li></a></td>";
+                for (var j = 0; j < data[i].length; j++) {
+                    html += ("<td>" + data[i][j] + "</td>");
 
+                }
+                html += "</tr>"
             }
-            html += "</tr>"
-        }
 
-        $("#manageTable").append(html);
+            $("#manageTable").append(html);
 
 
-    });
+        });
+
+    } else {
+        $(".container").text("You are not authorized to access this page.");
+    }
 });
 </script>
 

@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 
     <!-- AOS -->
-    <link rel='stylesheet' href='https://unpkg.com/aos@next/dist/aos.css'>
+    <link rel='stylesheet' href='aos.css'>
 
 
     <title>Pizza You</title>
@@ -118,7 +118,7 @@
 
 </header>
 
-<script src='https://unpkg.com/aos@next/dist/aos.js'></script>
+<script src='aos.js'></script>
 <script>
 AOS.init({
     offset: 400, // offset (in px) from the original trigger point
